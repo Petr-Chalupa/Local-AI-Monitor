@@ -69,6 +69,13 @@ services:
         volumes:
             # Required for monitoring container stats
             - /var/run/docker.sock:/var/run/docker.sock:ro
+        healthcheck:
+            test:
+                ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8080/health')"]
+            interval: 30s
+            timeout: 5s
+            retries: 3
+            start_period: 15s
         # NVIDIA GPU Passthrough for usage metrics
         deploy:
             resources:
