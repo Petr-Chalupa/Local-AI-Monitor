@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="cs">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="description" content="Monitoring of the AI server" />
+
+        <title>AI Server Monitor</title>
+
+        <link rel="stylesheet" href="/static/main.css" />
+        <script src="/static/chart.umd.min.js" defer></script>
+        <script src="/static/main.js" defer></script>
+    </head>
+    <body>
+        <header>
+            <p>Status: <strong id="status">Loading...</strong></p>
+            <p>Last updated: <time id="updated">Loading...</time></p>
+        </header>
+
+        <main>
+            <section>
+                <h2>Resources</h2>
+                <p>CPU: <strong id="cpu">Loading...</strong></p>
+                <p>RAM: <strong id="memory">Loading...</strong></p>
+                <p>Disk: <strong id="disk">Loading...</strong></p>
+                <canvas id="resources-chart"></canvas>
+            </section>
+
+            <section>
+                <h2>Requests</h2>
+                <p>Processing: <strong id="requests-processing">Loading...</strong></p>
+                <p>Queued: <strong id="requests-queued">Loading...</strong></p>
+                <p>Slots: <strong id="requests-slots">Loading...</strong></p>
+                <p>Speed: <strong id="requests-speed">Loading...</strong></p>
+                <p>Prompt: <strong id="requests-prompt">Loading...</strong></p>
+                <canvas id="requests-chart"></canvas>
+                <canvas id="speed-chart"></canvas>
+            </section>
+
+            <section>
+                <h2>Containers</h2>
+                <ul id="containers">
+                    <li>Loading...</li>
+                </ul>
+            </section>
+
+            <section>
+                <h2>GPUs</h2>
+                <ul id="gpus">
+                    <li>Loading...</li>
+                </ul>
+            </section>
+
+            <section>
+                <h2>Logs</h2>
+                <select id="log-source"></select>
+                <pre id="logs">Loading...</pre>
+            </section>
+        </main>
+    </body>
+</html>
