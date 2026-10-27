@@ -5,7 +5,7 @@ import os
 import time
 import threading
 
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI, HTTPException, Query
 from fastapi.responses import FileResponse
 from fastapi.staticfiles import StaticFiles
 
@@ -100,7 +100,7 @@ def requests():
 
 
 @app.get("/api/logs")
-def logs(container: str, tail: int = 100):
+def logs(container: str, tail: int = Query(100, ge=1, le=2000)):
     return {"timestamp": datetime.now(timezone.utc).isoformat(), "data": get_logs(container, tail)}
 
 

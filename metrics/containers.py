@@ -15,6 +15,12 @@ def get_own_networks() -> set[str] | None:
 own_networks = get_own_networks()
 
 
+def is_visible(c) -> bool:
+    if own_networks is None:
+        return True
+    return bool(own_networks & set(c.attrs["NetworkSettings"]["Networks"]))
+
+
 def get_containers() -> list[dict]:
     def get_memory_bytes(container) -> int | None:
         if container.status != "running":
@@ -27,7 +33,7 @@ def get_containers() -> list[dict]:
 
     result = []
     for c in docker_client.containers.list(all=True):
-        if own_networks is not None and not own_networks & set(c.attrs["NetworkSettings"]["Networks"]):
+        if not is_visible(c):
             continue
 
         state = c.attrs["State"]
