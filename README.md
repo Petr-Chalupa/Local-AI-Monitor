@@ -93,3 +93,15 @@ networks:
 ### GPU Passthrough
 
 The example focuses on NVIDIA GPUs; however, monitoring is prepared for AMD GPUs as well. Edit your Docker Compose setup accordingly.
+
+## Security
+
+> [!WARNING]
+> There is **no built-in authentication**. Anyone who can reach the dashboard
+> can see metrics, container info and logs (which may contain prompts).
+> Do not expose it to the internet; use a trusted network, VPN or an
+> authenticating reverse proxy.
+>
+> Mounting `docker.sock` gives access to the whole Docker daemon. `:ro` only
+> protects the socket file, **not** the API. For a safer setup, use a socket
+> proxy that allows read-only access to containers.
