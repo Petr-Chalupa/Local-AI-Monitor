@@ -65,7 +65,7 @@ services:
         networks:
             - ai-network
         ports:
-            - "${MONITOR_HOST_PORT}:8000"
+            - "${MONITOR_HOST_PORT}:8080"
         volumes:
             # Required for monitoring container stats
             - /var/run/docker.sock:/var/run/docker.sock:ro
